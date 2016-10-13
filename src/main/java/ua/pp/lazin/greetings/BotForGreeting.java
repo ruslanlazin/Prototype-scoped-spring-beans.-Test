@@ -4,6 +4,8 @@ package ua.pp.lazin.greetings;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.Random;
+
 @Component
 @Scope("prototype")
 public class BotForGreeting {
@@ -13,12 +15,9 @@ public class BotForGreeting {
 
     public BotForGreeting() {
 
-        String alphabet = "abcdefghijklmnopqrstuvwxyz";
-        StringBuilder botName = new StringBuilder("");
-        for (int i = 0; i < 7; i++) {
-            botName = botName.append(alphabet.charAt((int) (Math.random() * alphabet.length())));
-        }
-        this.botName = botName.toString();
+        this.botName = new Random().ints(7L, 'A', 'Z' + 1).collect(StringBuilder::new,
+                StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
     }
 
     public String greet(String name) {

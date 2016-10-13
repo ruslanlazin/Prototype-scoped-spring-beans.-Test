@@ -1,7 +1,10 @@
 package ua.pp.lazin;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 import ua.pp.lazin.service.ConsoleInputReader;
+
+import java.util.Random;
 
 @Configuration
 @ComponentScan
